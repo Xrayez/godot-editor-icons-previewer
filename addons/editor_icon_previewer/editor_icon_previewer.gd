@@ -7,8 +7,7 @@ var icon_container = preload('editor_icon_container.tscn').instance()
 
 func _enter_tree():
 	icon_container = preload('editor_icon_container.tscn').instance()
-	get_editor_interface().get_base_control().add_child(icon_container)
-
+	utils.godot_editor.add_child(icon_container)
 	add_tool_menu_item(tr('Show Editor Icons'), self, '_on_show_editor_icons_pressed')
 
 	_update_icons()
@@ -16,9 +15,7 @@ func _enter_tree():
 
 func _exit_tree():
 	if icon_container:
-		get_editor_interface().get_base_control().remove_child(icon_container)
 		icon_container.queue_free()
-
 		remove_tool_menu_item(tr('Show Editor Icons'))
 
 
@@ -27,6 +24,8 @@ func _on_show_editor_icons_pressed(data):
 
 
 func _update_icons():
+	icon_container.clear()
+
 	var list = utils.get_editor_icons_list()
 
 	for icon_name in list:

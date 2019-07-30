@@ -15,6 +15,12 @@ func add_icon(p_icon, p_hint_tooltip = ''):
 	$vbox/scroll/container.add_child(tr)
 
 
+func clear():
+	for idx in $vbox/scroll/container.get_child_count():
+		var tr = $vbox/scroll/container.get_child(idx)
+		tr.free()
+
+
 func _on_size_changed(pixels):
 	icon_size = int(pixels)
 	_update_icons(icon_size)

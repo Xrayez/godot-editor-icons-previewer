@@ -3,7 +3,6 @@
 [ext_resource path="res://addons/editor_icon_previewer/editor_icon_container.gd" type="Script" id=1]
 
 [node name="window" type="AcceptDialog"]
-visible = true
 margin_right = 300.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 300, 240 )

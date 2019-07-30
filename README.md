@@ -14,7 +14,9 @@ A window shall popup listing all available editor icons which Godot uses nativel
 
 ![Editor Icons](images/editor_icons.png)
 
-Hovering on icons will show their internal name to be used when developing plugins. See [editor_plugin_utils.gd](addons/editor_icon_previewer/editor_plugin_utils.gd) on how to fetch such icon.
+Hovering on icons will show their internal name to be used when developing plugins. 
+See [editor_plugin_utils.gd](addons/editor_icon_previewer/editor_plugin_utils.gd) 
+on how to fetch such icon.
 
 ### To-do
 
