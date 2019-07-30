@@ -3,7 +3,6 @@
 [ext_resource path="res://addons/editor_icon_previewer/editor_icon_container.gd" type="Script" id=1]
 
 [node name="window" type="AcceptDialog"]
-visible = true
 margin_right = 300.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 600, 480 )
@@ -19,9 +18,15 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 584.0
 margin_bottom = 411.0
+custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="search" type="LineEdit" parent="vbox"]
+margin_right = 164.0
+margin_bottom = 45.0
+placeholder_text = "Search icons..."
 
 [node name="scroll" type="ScrollContainer" parent="vbox"]
 margin_right = 746.0
@@ -105,4 +110,5 @@ __meta__ = {
 }
 [connection signal="resized" from="." to="." method="_on_window_resized"]
 [connection signal="visibility_changed" from="." to="." method="_on_window_visibility_changed"]
+[connection signal="text_changed" from="vbox/search" to="." method="_on_search_text_changed"]
 [connection signal="value_changed" from="vbox/params/size" to="." method="_on_size_changed"]
