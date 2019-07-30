@@ -3,9 +3,10 @@
 [ext_resource path="res://addons/editor_icon_previewer/editor_icon_container.gd" type="Script" id=1]
 
 [node name="window" type="AcceptDialog"]
+visible = true
 margin_right = 300.0
 margin_bottom = 240.0
-rect_min_size = Vector2( 300, 240 )
+rect_min_size = Vector2( 600, 480 )
 window_title = "Editor Icons"
 resizable = true
 script = ExtResource( 1 )
@@ -16,15 +17,15 @@ __meta__ = {
 [node name="vbox" type="VBoxContainer" parent="."]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 324.0
-margin_bottom = 171.0
+margin_right = 584.0
+margin_bottom = 411.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="scroll" type="ScrollContainer" parent="vbox"]
-margin_right = 308.0
-margin_bottom = 115.0
+margin_right = 746.0
+margin_bottom = 355.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -32,15 +33,16 @@ __meta__ = {
 }
 
 [node name="container" type="GridContainer" parent="vbox/scroll"]
-margin_right = 308.0
-margin_bottom = 115.0
+margin_right = 746.0
+margin_bottom = 355.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+columns = 23
 
 [node name="params" type="HBoxContainer" parent="vbox"]
-margin_top = 123.0
-margin_right = 308.0
-margin_bottom = 155.0
+margin_top = 363.0
+margin_right = 746.0
+margin_bottom = 395.0
 
 [node name="icon" type="Label" parent="vbox/params"]
 margin_top = 3.0
@@ -69,6 +71,35 @@ margin_top = 3.0
 margin_right = 308.0
 margin_bottom = 28.0
 text = "16 px"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="space" type="Control" parent="vbox/params"]
+margin_left = 316.0
+margin_right = 738.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="info" type="HBoxContainer" parent="vbox/params"]
+margin_left = 746.0
+margin_right = 746.0
+margin_bottom = 32.0
+size_flags_horizontal = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="copied" type="Label" parent="vbox/params/info"]
+visible = false
+margin_top = 3.0
+margin_right = 223.0
+margin_bottom = 28.0
+text = "Copied to clipboard: "
+
+[node name="icon" type="Label" parent="vbox/params/info"]
+margin_top = 3.0
+margin_bottom = 28.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

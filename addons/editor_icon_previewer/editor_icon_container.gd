@@ -12,7 +12,21 @@ func add_icon(p_icon, p_hint_tooltip = ''):
 	tr.rect_min_size = Vector2(icon_size, icon_size)
 	tr.hint_tooltip = p_hint_tooltip
 
+	tr.connect('gui_input', self, '_icon_gui_input', [tr])
+
 	$vbox/scroll/container.add_child(tr)
+
+
+func _icon_gui_input(event, icon):
+
+	if event is InputEventMouseButton and event.pressed:
+		OS.clipboard = icon.hint_tooltip
+		$vbox/params/info/copied.show()
+
+	elif event is InputEventMouseMotion:
+		if event.speed.length() > 25:
+			$vbox/params/info/copied.hide()
+		$vbox/params/info/icon.text = icon.hint_tooltip
 
 
 func clear():
