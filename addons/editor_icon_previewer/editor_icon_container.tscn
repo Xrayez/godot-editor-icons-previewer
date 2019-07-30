@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/editor_icon_previewer/editor_icon_container.gd" type="Script" id=1]
+
+[node name="window" type="AcceptDialog"]
+visible = true
+margin_right = 300.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 300, 240 )
+window_title = "Editor Icons"
+resizable = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 324.0
+margin_bottom = 171.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scroll" type="ScrollContainer" parent="vbox"]
+margin_right = 308.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="GridContainer" parent="vbox/scroll"]
+margin_right = 308.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="params" type="HBoxContainer" parent="vbox"]
+margin_top = 123.0
+margin_right = 308.0
+margin_bottom = 155.0
+
+[node name="icon" type="Label" parent="vbox/params"]
+margin_top = 3.0
+margin_right = 106.0
+margin_bottom = 28.0
+text = "Icons size"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="size" type="HSlider" parent="vbox/params"]
+margin_left = 114.0
+margin_right = 242.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 128, 0 )
+min_value = 16.0
+max_value = 128.0
+value = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pixels" type="Label" parent="vbox/params"]
+margin_left = 250.0
+margin_top = 3.0
+margin_right = 308.0
+margin_bottom = 28.0
+text = "16 px"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="resized" from="." to="." method="_on_window_resized"]
+[connection signal="visibility_changed" from="." to="." method="_on_window_visibility_changed"]
+[connection signal="value_changed" from="vbox/params/size" to="." method="_on_size_changed"]

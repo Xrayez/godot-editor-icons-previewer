@@ -1,0 +1,7 @@
+# Godot
+.fscache
+.import
+export_presets.cfg
+
+# Editors
+.vscode
