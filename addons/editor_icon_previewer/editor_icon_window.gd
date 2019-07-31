@@ -1,80 +1,136 @@
 tool
 extends AcceptDialog
 
+const SELECT_ICON_MSG = "Select any icon."
+const ICON_SIZE_MSG = "Icon size: "
+const NUMBER_ICONS_MSG = "Found: "
+
 const MIN_ICON_SIZE = 16
 const MAX_ICON_SIZE = 128
 
 var icon_size = MIN_ICON_SIZE
 var filter = ''
 
+var _update_queued = false
+
 
 func _ready():
-	$vbox/params/size.min_value = MIN_ICON_SIZE
-	$vbox/params/size.max_value = MAX_ICON_SIZE
+	$body/split/info/icon/label.text = SELECT_ICON_MSG
+
+	$body/split/info/icon/params/size/range.min_value = MIN_ICON_SIZE
+	$body/split/info/icon/params/size/range.max_value = MAX_ICON_SIZE
+
+	$body/split/info/icon/preview.rect_min_size = Vector2(MAX_ICON_SIZE, MAX_ICON_SIZE)
+
+	get_ok().hide() # give more space for icons
+
+	_queue_update()
+
+
+func _queue_update():
+
+	if not is_inside_tree():
+		return
+
+	if _update_queued:
+		return
+
+	_update_queued = true
+
+	call_deferred("_update_icons")
 
 
 func add_icon(p_icon, p_hint_tooltip = ''):
-	var tr = TextureRect.new()
-	tr.expand = true
-	tr.texture = p_icon
-	tr.rect_min_size = Vector2(icon_size, icon_size)
-	tr.hint_tooltip = p_hint_tooltip
+	var icon = TextureRect.new()
+	icon.expand = true
+	icon.texture = p_icon
+	icon.rect_min_size = Vector2(icon_size, icon_size)
+	icon.hint_tooltip = p_hint_tooltip
+	icon.name = p_hint_tooltip
 
-	tr.connect('gui_input', self, '_icon_gui_input', [tr])
+	icon.connect('gui_input', self, '_icon_gui_input', [icon])
 
-	$vbox/scroll/container.add_child(tr)
+	$body/split/scroll/container.add_child(icon)
 
 
 func _icon_gui_input(event, icon):
 
 	if event is InputEventMouseButton and event.pressed:
 		OS.clipboard = icon.hint_tooltip
-		$vbox/params/info/copied.show()
+		$body/split/info/icon/copied.show()
 
 	elif event is InputEventMouseMotion:
-		if event.speed.length() > 25:
-			$vbox/params/info/copied.hide()
-		$vbox/params/info/icon.text = icon.hint_tooltip
+		$body/split/info/icon/label.text = icon.hint_tooltip
+		$body/split/info/icon/size.text = ICON_SIZE_MSG + str(icon.texture.get_size())
+		$body/split/info/icon/preview.texture = icon.texture
 
 
 func clear():
-	for idx in $vbox/scroll/container.get_child_count():
-		var tr = $vbox/scroll/container.get_child(idx)
-		tr.free()
+	for idx in $body/split/scroll/container.get_child_count():
+		$body/split/scroll/container.get_child(idx).queue_free()
 
 
 func _on_size_changed(pixels):
 	icon_size = int(clamp(pixels, MIN_ICON_SIZE, MAX_ICON_SIZE))
-	_update_icons()
+	_queue_update()
 
 
 func _update_icons():
-	for idx in $vbox/scroll/container.get_child_count():
-		var tr = $vbox/scroll/container.get_child(idx)
+	var number = 0
 
-		if not filter.is_subsequence_ofi(tr.hint_tooltip):
-			tr.visible = false
+	for idx in $body/split/scroll/container.get_child_count():
+		var icon = $body/split/scroll/container.get_child(idx)
+
+		if not filter.is_subsequence_ofi(icon.hint_tooltip):
+			icon.visible = false
 		else:
-			tr.visible = true
+			icon.visible = true
+			number += 1
 
-		tr.rect_min_size = Vector2(icon_size, icon_size)
-		tr.rect_size = tr.rect_min_size
+		icon.rect_min_size = Vector2(icon_size, icon_size)
+		icon.rect_size = icon.rect_min_size
 
-	var sep = $vbox/scroll/container.get_constant('hseparation')
-	var cols = get_rect().size.x / (icon_size + sep)
-	$vbox/scroll/container.columns = cols - 2 # FIXME: fit window properly
+	var sep = $body/split/scroll/container.get_constant('hseparation')
+	var cols = int($body/split/scroll.rect_size.x / (icon_size + sep))
 
-	$vbox/params/pixels.text = str(icon_size) + " px"
+	$body/split/scroll/container.columns = cols - 1
+	$body/split/info/icon/params/size/pixels.text = str(icon_size) + " px"
+
+	$body/search/found.text = NUMBER_ICONS_MSG + str(number)
+
+	_update_queued = false
 
 
 func _on_window_visibility_changed():
-	call_deferred('_update_icons', icon_size)
+	_queue_update()
 
 
 func _on_window_resized():
-	_update_icons()
+	_queue_update()
 
 
 func _on_search_text_changed(text):
 	filter = text
-	_update_icons()
+	_queue_update()
+
+
+func _on_container_mouse_exited():
+	$body/split/info/icon/label.text = SELECT_ICON_MSG
+	$body/split/info/icon/size.text = ''
+	$body/split/info/icon/copied.hide()
+	$body/split/info/icon/preview.texture = null
+
+
+func _on_window_about_to_show():
+	# For some reason can't get proper rect size, so need to wait
+	yield($body/split/scroll/container, 'sort_children')
+	_queue_update()
+
+
+func _on_window_popup_hide():
+	# Reset
+	filter = ''
+	icon_size = MIN_ICON_SIZE
+
+	$body/search/box.text = filter
+	$body/split/info/icon/params/size/range.value = icon_size

@@ -22,7 +22,7 @@ func _exit_tree():
 		remove_tool_menu_item(tr('Show Editor Icons'))
 
 
-func _on_show_editor_icons_pressed(data):
+func _on_show_editor_icons_pressed(_data):
 	icon_window.popup_centered_ratio(0.5)
 
 
