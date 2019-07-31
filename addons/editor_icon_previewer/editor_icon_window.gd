@@ -2,8 +2,15 @@ tool
 extends AcceptDialog
 
 const MIN_ICON_SIZE = 16
+const MAX_ICON_SIZE = 128
+
 var icon_size = MIN_ICON_SIZE
 var filter = ''
+
+
+func _ready():
+	$vbox/params/size.min_value = MIN_ICON_SIZE
+	$vbox/params/size.max_value = MAX_ICON_SIZE
 
 
 func add_icon(p_icon, p_hint_tooltip = ''):
@@ -37,11 +44,11 @@ func clear():
 
 
 func _on_size_changed(pixels):
-	icon_size = int(pixels)
-	_update_icons(icon_size)
+	icon_size = int(clamp(pixels, MIN_ICON_SIZE, MAX_ICON_SIZE))
+	_update_icons()
 
 
-func _update_icons(pixels):
+func _update_icons():
 	for idx in $vbox/scroll/container.get_child_count():
 		var tr = $vbox/scroll/container.get_child(idx)
 
@@ -50,14 +57,14 @@ func _update_icons(pixels):
 		else:
 			tr.visible = true
 
-		tr.rect_min_size = Vector2(pixels, pixels)
+		tr.rect_min_size = Vector2(icon_size, icon_size)
 		tr.rect_size = tr.rect_min_size
 
 	var sep = $vbox/scroll/container.get_constant('hseparation')
-	var cols = get_rect().size.x / (pixels + sep)
+	var cols = get_rect().size.x / (icon_size + sep)
 	$vbox/scroll/container.columns = cols - 2 # FIXME: fit window properly
 
-	$vbox/params/pixels.text = str(pixels) + " px"
+	$vbox/params/pixels.text = str(icon_size) + " px"
 
 
 func _on_window_visibility_changed():
@@ -65,9 +72,9 @@ func _on_window_visibility_changed():
 
 
 func _on_window_resized():
-	_update_icons(icon_size)
+	_update_icons()
 
 
 func _on_search_text_changed(text):
 	filter = text
-	_update_icons(icon_size)
+	_update_icons()
