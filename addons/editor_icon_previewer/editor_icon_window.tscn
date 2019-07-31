@@ -26,12 +26,11 @@ __meta__ = {
 }
 
 [node name="search" type="HBoxContainer" parent="body"]
-margin_top = 40.0
 margin_right = 584.0
-margin_bottom = 64.0
+margin_bottom = 24.0
 
 [node name="box" type="LineEdit" parent="body/search"]
-margin_right = 584.0
+margin_right = 484.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 placeholder_text = "Search icons..."
@@ -40,14 +39,14 @@ caret_blink_speed = 0.5
 
 [node name="found" type="LineEdit" parent="body/search"]
 margin_left = 488.0
-margin_right = 1072.0
+margin_right = 584.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 96, 0 )
 text = "Found: 0"
 editable = false
 
 [node name="split" type="HSplitContainer" parent="body"]
-margin_top = 80.0
+margin_top = 40.0
 margin_right = 584.0
 margin_bottom = 456.0
 size_flags_horizontal = 3
@@ -56,7 +55,7 @@ dragger_visibility = 1
 
 [node name="scroll" type="ScrollContainer" parent="body/split"]
 margin_right = 430.0
-margin_bottom = 376.0
+margin_bottom = 416.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -65,7 +64,7 @@ __meta__ = {
 
 [node name="container" type="GridContainer" parent="body/split/scroll"]
 margin_right = 430.0
-margin_bottom = 376.0
+margin_bottom = 416.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 20
@@ -74,16 +73,15 @@ columns = 20
 self_modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
 margin_left = 442.0
 margin_right = 584.0
-margin_bottom = 376.0
-size_flags_horizontal = 3
+margin_bottom = 416.0
+rect_min_size = Vector2( 176, 0 )
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.25
 
 [node name="icon" type="VBoxContainer" parent="body/split/info"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 135.0
-margin_bottom = 369.0
+margin_bottom = 409.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
@@ -124,18 +122,19 @@ margin_top = 3.0
 margin_right = 223.0
 margin_bottom = 28.0
 text = "Copied to clipboard!"
+autowrap = true
 
 [node name="space" type="Control" parent="body/split/info/icon"]
 margin_top = 168.0
 margin_right = 128.0
-margin_bottom = 324.0
+margin_bottom = 364.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="params" type="VBoxContainer" parent="body/split/info/icon"]
-margin_top = 328.0
+margin_top = 368.0
 margin_right = 128.0
-margin_bottom = 362.0
+margin_bottom = 402.0
 
 [node name="icon" type="Label" parent="body/split/info/icon/params"]
 margin_right = 128.0
@@ -170,6 +169,7 @@ text = "16 px"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="about_to_show" from="." to="." method="_on_window_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_window_popup_hide"]
 [connection signal="resized" from="." to="." method="_on_window_resized"]
