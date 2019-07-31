@@ -29,7 +29,8 @@ func _on_show_editor_icons_pressed(_data):
 func _update_icons():
 	icon_window.clear()
 
-	var list = utils.get_editor_icons_list()
+	var list = Array(utils.get_editor_icons_list())
+	list.sort()
 
 	for icon_name in list:
 		var icon = utils.get_editor_icon(icon_name)
