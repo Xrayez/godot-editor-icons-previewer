@@ -3,6 +3,10 @@
 Godot plugin which adds ability to preview all available icons in Godot Editor.
 Can be used to help developing Godot plugins without the need to import custom icons.
 
+## Compatibility
+
+Godot 3.1+ compatible.
+
 ## Usage
 
 Navigate to `Project` → `Tools` and click `Show Editor Icons` menu option:
