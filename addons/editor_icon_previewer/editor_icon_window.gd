@@ -102,7 +102,8 @@ func _update_icons():
 
 
 func _on_window_visibility_changed():
-	_queue_update()
+	if visible:
+		_queue_update()
 
 
 func _on_window_resized():
@@ -124,6 +125,7 @@ func _on_container_mouse_exited():
 func _on_window_about_to_show():
 	# For some reason can't get proper rect size, so need to wait
 	yield($body/split/scroll/container, 'sort_children')
+	$body/search/box.grab_focus()
 	_queue_update()
 
 

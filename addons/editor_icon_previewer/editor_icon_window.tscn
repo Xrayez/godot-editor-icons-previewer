@@ -6,6 +6,7 @@
 margin_right = 300.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 600, 480 )
+focus_mode = 2
 window_title = "Editor Icons"
 resizable = true
 script = ExtResource( 1 )
@@ -42,8 +43,10 @@ margin_left = 488.0
 margin_right = 584.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 96, 0 )
+focus_mode = 0
 text = "Found: 0"
 editable = false
+focus_mode = 0
 
 [node name="split" type="HSplitContainer" parent="body"]
 margin_top = 40.0
@@ -152,10 +155,12 @@ margin_bottom = 34.0
 [node name="range" type="HSlider" parent="body/split/info/icon/params/size"]
 margin_right = 89.0
 margin_bottom = 16.0
+focus_mode = 0
 size_flags_horizontal = 3
 min_value = 16.0
 max_value = 128.0
 value = 16.0
+focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,7 +174,6 @@ text = "16 px"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="about_to_show" from="." to="." method="_on_window_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_window_popup_hide"]
 [connection signal="resized" from="." to="." method="_on_window_resized"]
