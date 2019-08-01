@@ -6,7 +6,8 @@ the need to import any custom icons.
 
 ## Compatibility
 
-Godot 3.1+ compatible.
+Godot 3.0+ compatible. Note that in version 3.0, there's no menu option, but the
+plugin is still accesible via a shortcut (see below).
 
 ## Usage
 
