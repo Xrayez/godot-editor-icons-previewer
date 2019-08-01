@@ -26,6 +26,10 @@ In order to use the icon in your plugins, you can fetch it via code like so:
 button.icon = get_icon('Add', 'EditorIcons')
 ```
 
+To simplify the process even further, you can also get the above snippet by
+right-clicking on an icon and it will be copied to your clipboard. Left-clicking 
+just copies the raw icon's name.
+
 In some cases, a control might not have a theme inherited from Godot's base 
 control as it can be overriden. For a more sophisticated way on how to get an icon
 from Godot's base control, see 

@@ -4,6 +4,7 @@ extends AcceptDialog
 const SELECT_ICON_MSG = "Select any icon."
 const ICON_SIZE_MSG = "Icon size: "
 const NUMBER_ICONS_MSG = "Found: "
+const SNIPPET_TEMPLATE = "get_icon('%s', 'EditorIcons')"
 
 const MIN_ICON_SIZE = 16
 const MAX_ICON_SIZE = 128
@@ -56,13 +57,22 @@ func add_icon(p_icon, p_hint_tooltip = ''):
 func _icon_gui_input(event, icon):
 
 	if event is InputEventMouseButton and event.pressed:
-		OS.clipboard = icon.hint_tooltip
-		$body/split/info/icon/copied.show()
+		if event.button_index == BUTTON_LEFT:
+			# Copy raw icon's name into the clipboard
+			OS.clipboard = icon.hint_tooltip
+			$body/split/info/icon/copied.show()
+
+		elif event.button_index == BUTTON_RIGHT:
+			# Copy icon's name with embedded code into the clipboard
+			var snippet = SNIPPET_TEMPLATE % [icon.hint_tooltip]
+			OS.clipboard = snippet
+			$body/split/info/icon/copied.show()
 
 	elif event is InputEventMouseMotion:
+		# Preview hovered icon on the side panel
 		$body/split/info/icon/label.text = icon.hint_tooltip
-		$body/split/info/icon/size.text = ICON_SIZE_MSG + str(icon.texture.get_size())
 		$body/split/info/icon/preview.texture = icon.texture
+		$body/split/info/icon/size.text = ICON_SIZE_MSG + str(icon.texture.get_size())
 
 
 func clear():

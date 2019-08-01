@@ -1,4 +1,4 @@
-# Copyright © 2019 Andrii Doroshenko and contributors
+# Copyright Â© 2019 Andrii Doroshenko and contributors
 # Distributed under the terms of the MIT license.
 #
 # Upstream repo: https://github.com/Xrayez/godot-editor-plugin-tools
