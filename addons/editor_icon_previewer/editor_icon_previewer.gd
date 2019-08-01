@@ -1,25 +1,23 @@
 tool
 extends EditorPlugin
 
-var utils
 var icon_window
 
 
 func _enter_tree():
-	utils = preload('editor_plugin_utils.gd').new(self)
-
 	icon_window = preload('editor_icon_window.tscn').instance()
-	utils.godot_editor.add_child(icon_window)
-
+	get_editor_interface().get_base_control().add_child(icon_window)
 	add_tool_menu_item(tr('Show Editor Icons'), self, '_on_show_editor_icons_pressed')
-
-	_update_icons()
 
 
 func _exit_tree():
 	if icon_window:
 		icon_window.queue_free()
 		remove_tool_menu_item(tr('Show Editor Icons'))
+
+
+func _ready():
+	_update_icons()
 
 
 func _on_show_editor_icons_pressed(_data):
@@ -29,9 +27,11 @@ func _on_show_editor_icons_pressed(_data):
 func _update_icons():
 	icon_window.clear()
 
-	var list = Array(utils.get_editor_icons_list())
+	var godot_theme = get_editor_interface().get_base_control().theme
+
+	var list = Array(godot_theme.get_icon_list('EditorIcons'))
 	list.sort()
 
 	for icon_name in list:
-		var icon = utils.get_editor_icon(icon_name)
+		var icon = godot_theme.get_icon(icon_name, 'EditorIcons')
 		icon_window.add_icon(icon, icon_name)

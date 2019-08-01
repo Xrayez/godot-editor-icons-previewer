@@ -33,4 +33,4 @@ just copies the raw icon's name.
 In some cases, a control might not have a theme inherited from Godot's base 
 control as it can be overriden. For a more sophisticated way on how to get an icon
 from Godot's base control, see 
-[editor_plugin_utils.gd](addons/editor_icon_previewer/editor_plugin_utils.gd).
+[editor_plugin_utils.gd](https://github.com/Xrayez/godot-editor-plugin-tools/blob/master/editor_plugin_utils.gd).
