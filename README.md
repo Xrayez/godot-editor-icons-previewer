@@ -19,6 +19,14 @@ A window shall popup listing all available editor icons which Godot uses nativel
 
 ![Editor Icons](images/editor_icons.gif)
 
-Hovering on icons will show their internal name to be used when developing plugins. 
-See [editor_plugin_utils.gd](addons/editor_icon_previewer/editor_plugin_utils.gd) 
-on how to fetch such icon.
+Hovering on icons will show their internal name to be used when developing plugins.
+In order to use the icon in your plugins, you can fetch it via code like so:
+
+```gdscript
+button.icon = get_icon('Add', 'EditorIcons')
+```
+
+In some cases, a control might not have a theme inherited from Godot's base 
+control as it can be overriden. For a more sophisticated way on how to get an icon
+from Godot's base control, see 
+[editor_plugin_utils.gd](addons/editor_icon_previewer/editor_plugin_utils.gd).
