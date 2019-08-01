@@ -16,7 +16,7 @@ func _enter_tree():
 func _exit_tree():
 	if icon_window:
 		icon_window.queue_free()
-		remove_tool_menu_item(tr('Show Editor Icons'))
+		remove_icons_menu_item(tr('Show Editor Icons'))
 
 
 func _ready():
@@ -27,6 +27,12 @@ func add_icons_menu_item(p_name, p_callback):
 	var minor_version = Engine.get_version_info().minor
 	if minor_version >= 1:
 		add_tool_menu_item(p_name, self, p_callback)
+
+
+func remove_icons_menu_item(p_name):
+	var minor_version = Engine.get_version_info().minor
+	if minor_version >= 1:
+		remove_tool_menu_item(p_name)
 
 
 func _on_show_editor_icons_pressed(_data):
