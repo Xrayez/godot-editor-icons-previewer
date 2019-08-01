@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Ability to copy icon's name wrapped into a code snippet on right clicking.
+- Display editor icons window by pressing a keyboard shortcut <kbd>Alt</kbd>+<kbd>I</kbd>.
 
 ### Changed
 

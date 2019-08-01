@@ -10,7 +10,8 @@ Godot 3.1+ compatible.
 
 ## Usage
 
-Navigate to `Project` → `Tools` and click `Show Editor Icons` menu option:
+Navigate to `Project` > `Tools` and click `Show Editor Icons` menu option
+(<kbd>Alt</kbd>+<kbd>I</kbd> shortcut is also available for this):
 
 ![Show Editor Icons](images/show_editor_icons.png)
 

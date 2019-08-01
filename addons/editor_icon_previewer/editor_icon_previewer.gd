@@ -21,7 +21,7 @@ func _ready():
 
 
 func _on_show_editor_icons_pressed(_data):
-	icon_window.popup_centered_ratio(0.5)
+	icon_window.display()
 
 
 func _update_icons():
@@ -30,7 +30,7 @@ func _update_icons():
 	var godot_theme = get_editor_interface().get_base_control().theme
 
 	var list = Array(godot_theme.get_icon_list('EditorIcons'))
-	list.sort()
+	list.sort() # alphabetically
 
 	for icon_name in list:
 		var icon = godot_theme.get_icon(icon_name, 'EditorIcons')

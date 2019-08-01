@@ -75,6 +75,18 @@ func _icon_gui_input(event, icon):
 		$body/split/info/icon/size.text = ICON_SIZE_MSG + str(icon.texture.get_size())
 
 
+func _input(event):
+	if event is InputEventKey and event.is_pressed() and not event.echo:
+		if event.alt and event.scancode == KEY_I:
+			if not visible:
+				display()
+			else:
+				hide()
+
+func display():
+	popup_centered_ratio(0.5)
+
+
 func clear():
 	for idx in $body/split/scroll/container.get_child_count():
 		$body/split/scroll/container.get_child(idx).queue_free()
