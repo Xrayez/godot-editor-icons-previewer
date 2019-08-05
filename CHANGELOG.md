@@ -4,11 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased][1.1] - 2019-XX-XX
+## [1.1] - 2019-08-05
 
 ### Added
 
-- Ability to copy icon's name wrapped into a code snippet on right clicking.
+- Ability to copy icon's name wrapped into a code snippet on right clicking:
+    - `get_icon('Add', 'EditorIcons')`
 - Display editor icons window by pressing a keyboard shortcut <kbd>Alt</kbd>+<kbd>I</kbd>.
 - Partial compatibility with Godot 3.0.
 
@@ -18,8 +19,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Editor icons aligned to fit container on resize.
 
 ## Compare versions
-[Unreleased] 1.1 https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.0...HEAD
+1.1: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.0...v1.1
 
 1.0: https://github.com/Xrayez/godot-editor-icons-previewer/releases/tag/v1.0

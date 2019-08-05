@@ -1,8 +1,8 @@
 # Godot Editor Icons Previewer
 
 Godot plugin which adds ability to preview all available icons in Godot Editor.
-Can be used to facilitate the process of developing Godot editor plugins without 
-the need to import any custom icons.
+Can be used to facilitate the process of developing neat user interfaces for 
+Godot editor plugins without the need to import any custom icons.
 
 ## Compatibility
 
