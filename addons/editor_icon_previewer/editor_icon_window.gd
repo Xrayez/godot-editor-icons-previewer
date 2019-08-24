@@ -22,6 +22,10 @@ func _ready():
 	$body/split/info/icon/params/size/range.max_value = MAX_ICON_SIZE
 
 	$body/split/info/icon/preview.rect_min_size = Vector2(MAX_ICON_SIZE, MAX_ICON_SIZE)
+	
+	if has_color("success_color", "Editor"):
+		var color = get_color("success_color", "Editor")
+		$body/split/info/icon/copied.add_color_override("font_color", color);
 
 	get_ok().hide() # give more space for icons
 

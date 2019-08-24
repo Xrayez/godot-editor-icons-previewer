@@ -120,7 +120,6 @@ __meta__ = {
 
 [node name="copied" type="Label" parent="body/split/info/icon"]
 visible = false
-self_modulate = Color( 0, 1, 0, 1 )
 margin_top = 3.0
 margin_right = 223.0
 margin_bottom = 28.0
