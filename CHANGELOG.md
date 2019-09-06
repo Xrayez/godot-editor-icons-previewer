@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased][1.2] - 2019-XX-XX
+
+### Changed
+
+- Make icons integration in C++ code easier by using double quotes in snippet 
+  template by default:
+    - `get_icon("Add", "EditorIcons")`
+
 ## [1.1] - 2019-08-05
 
 ### Added
@@ -22,6 +30,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Editor icons aligned to fit container on resize.
 
 ## Compare versions
+[Unreleased] 1.2: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.1..HEAD
+
 1.1: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.0...v1.1
 
 1.0: https://github.com/Xrayez/godot-editor-icons-previewer/releases/tag/v1.0

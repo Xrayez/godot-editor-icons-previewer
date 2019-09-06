@@ -4,7 +4,7 @@ extends AcceptDialog
 const SELECT_ICON_MSG = "Select any icon."
 const ICON_SIZE_MSG = "Icon size: "
 const NUMBER_ICONS_MSG = "Found: "
-const SNIPPET_TEMPLATE = "get_icon('%s', 'EditorIcons')"
+const SNIPPET_TEMPLATE = "get_icon(\"%s\", \"EditorIcons\")"
 
 const MIN_ICON_SIZE = 16
 const MAX_ICON_SIZE = 128
@@ -22,7 +22,7 @@ func _ready():
 	$body/split/info/icon/params/size/range.max_value = MAX_ICON_SIZE
 
 	$body/split/info/icon/preview.rect_min_size = Vector2(MAX_ICON_SIZE, MAX_ICON_SIZE)
-	
+
 	if has_color("success_color", "Editor"):
 		var color = get_color("success_color", "Editor")
 		$body/split/info/icon/copied.add_color_override("font_color", color);
