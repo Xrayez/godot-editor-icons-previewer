@@ -1,6 +1,8 @@
 tool
 extends AcceptDialog
 
+signal update_request()
+
 const SELECT_ICON_MSG = "Select any icon."
 const ICON_SIZE_MSG = "Icon size: "
 const NUMBER_ICONS_MSG = "Found: "
@@ -86,6 +88,13 @@ func _input(event):
 				display()
 			else:
 				hide()
+
+
+func _notification(what):
+	match what:
+		NOTIFICATION_THEME_CHANGED:
+			emit_signal("update_request")
+
 
 func display():
 	popup_centered_ratio(0.5)

@@ -10,6 +10,7 @@ func _enter_tree():
 
 	icon_window = preload('editor_icon_window.tscn').instance()
 	get_editor_interface().get_base_control().add_child(icon_window)
+	icon_window.connect('update_request', self, '_on_update_requested')
 
 	add_icons_menu_item(tr('Show Editor Icons'), '_on_show_editor_icons_pressed')
 
@@ -38,6 +39,10 @@ func remove_icons_menu_item(p_name):
 
 func _on_show_editor_icons_pressed(_data):
 	icon_window.display()
+
+
+func _on_update_requested():
+	_update_icons()
 
 
 func _update_icons():
