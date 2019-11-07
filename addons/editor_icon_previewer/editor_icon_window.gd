@@ -97,7 +97,12 @@ func _notification(what):
 
 
 func display():
-	popup_centered_ratio(0.5)
+	if $body/split/scroll/container.get_child_count() == 0:
+		# First time, request to create previews by the plugin
+		emit_signal("update_request")
+		call_deferred('popup_centered_ratio', 0.5)
+	else:
+		popup_centered_ratio(0.5)
 
 
 func clear():

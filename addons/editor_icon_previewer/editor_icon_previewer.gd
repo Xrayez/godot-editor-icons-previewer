@@ -21,10 +21,6 @@ func _exit_tree():
 		remove_icons_menu_item(tr('Show Editor Icons'))
 
 
-func _ready():
-	_update_icons()
-
-
 func add_icons_menu_item(p_name, p_callback):
 	var minor_version = Engine.get_version_info().minor
 	if minor_version >= 1:
@@ -42,10 +38,10 @@ func _on_show_editor_icons_pressed(_data):
 
 
 func _on_update_requested():
-	_update_icons()
+	_populate_icons()
 
 
-func _update_icons():
+func _populate_icons():
 	icon_window.clear()
 
 	var godot_theme = get_editor_interface().get_base_control().theme
