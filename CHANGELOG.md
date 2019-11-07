@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
   template by default:
     - `get_icon("Add", "EditorIcons")`
 
+### Fixed
+
+- Icon previews are automatically updated whenever Godot theme is changed (Dark/Light).
+- Invalid icons with no name are skipped which could cause error spam, severely impacting editor startup times in Godot 3.2.
+
 ## [1.1] - 2019-08-05
 
 ### Added
