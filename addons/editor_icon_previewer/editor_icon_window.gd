@@ -3,6 +3,21 @@ extends AcceptDialog
 
 signal update_request()
 
+onready var search_box = $body/search/box
+onready var search_box_count_label = $body/search/found
+
+onready var icons_control = $body/icons
+onready var previews_container = icons_control.get_node("previews/container")
+onready var previews_scroll = icons_control.get_node("previews")
+onready var icon_info = icons_control.get_node("info/icon")
+
+onready var icon_preview_size_range = icon_info.get_node("params/size/range")
+onready var icon_info_label = icon_info.get_node("label")
+onready var icon_preview = icon_info.get_node("preview")
+onready var icon_copied_label = icon_info.get_node("copied")
+onready var icon_size_label = icon_info.get_node("size")
+onready var icon_preview_size = icon_info.get_node("params/size/pixels")
+
 const SELECT_ICON_MSG = "Select any icon."
 const ICON_SIZE_MSG = "Icon size: "
 const NUMBER_ICONS_MSG = "Found: "
@@ -18,16 +33,16 @@ var _update_queued = false
 
 
 func _ready():
-	$body/split/info/icon/label.text = SELECT_ICON_MSG
+	icon_info_label.text = SELECT_ICON_MSG
 
-	$body/split/info/icon/params/size/range.min_value = MIN_ICON_SIZE
-	$body/split/info/icon/params/size/range.max_value = MAX_ICON_SIZE
+	icon_preview_size_range.min_value = MIN_ICON_SIZE
+	icon_preview_size_range.max_value = MAX_ICON_SIZE
 
-	$body/split/info/icon/preview.rect_min_size = Vector2(MAX_ICON_SIZE, MAX_ICON_SIZE)
+	icon_preview.rect_min_size = Vector2(MAX_ICON_SIZE, MAX_ICON_SIZE)
 
 	if has_color("success_color", "Editor"):
 		var color = get_color("success_color", "Editor")
-		$body/split/info/icon/copied.add_color_override("font_color", color);
+		icon_copied_label.add_color_override("font_color", color);
 
 	get_ok().hide() # give more space for icons
 
@@ -57,7 +72,7 @@ func add_icon(p_icon, p_name):
 
 	icon.connect('gui_input', self, '_icon_gui_input', [icon])
 
-	$body/split/scroll/container.add_child(icon)
+	previews_container.add_child(icon)
 
 
 func _icon_gui_input(event, icon):
@@ -66,19 +81,19 @@ func _icon_gui_input(event, icon):
 		if event.button_index == BUTTON_LEFT:
 			# Copy raw icon's name into the clipboard
 			OS.clipboard = icon.hint_tooltip
-			$body/split/info/icon/copied.show()
+			icon_copied_label.show()
 
 		elif event.button_index == BUTTON_RIGHT:
 			# Copy icon's name with embedded code into the clipboard
 			var snippet = SNIPPET_TEMPLATE % [icon.hint_tooltip]
 			OS.clipboard = snippet
-			$body/split/info/icon/copied.show()
+			icon_copied_label.show()
 
 	elif event is InputEventMouseMotion:
 		# Preview hovered icon on the side panel
-		$body/split/info/icon/label.text = icon.hint_tooltip
-		$body/split/info/icon/preview.texture = icon.texture
-		$body/split/info/icon/size.text = ICON_SIZE_MSG + str(icon.texture.get_size())
+		icon_info_label.text = icon.hint_tooltip
+		icon_preview.texture = icon.texture
+		icon_size_label.text = ICON_SIZE_MSG + str(icon.texture.get_size())
 
 
 func _input(event):
@@ -97,7 +112,7 @@ func _notification(what):
 
 
 func display():
-	if $body/split/scroll/container.get_child_count() == 0:
+	if previews_container.get_child_count() == 0:
 		# First time, request to create previews by the plugin
 		emit_signal("update_request")
 		call_deferred('popup_centered_ratio', 0.5)
@@ -106,8 +121,8 @@ func display():
 
 
 func clear():
-	for idx in $body/split/scroll/container.get_child_count():
-		$body/split/scroll/container.get_child(idx).queue_free()
+	for idx in previews_container.get_child_count():
+		previews_container.get_child(idx).queue_free()
 
 
 func _on_size_changed(pixels):
@@ -118,8 +133,8 @@ func _on_size_changed(pixels):
 func _update_icons():
 	var number = 0
 
-	for idx in $body/split/scroll/container.get_child_count():
-		var icon = $body/split/scroll/container.get_child(idx)
+	for idx in previews_container.get_child_count():
+		var icon = previews_container.get_child(idx)
 
 		if not filter.is_subsequence_ofi(icon.hint_tooltip):
 			icon.visible = false
@@ -130,13 +145,13 @@ func _update_icons():
 		icon.rect_min_size = Vector2(icon_size, icon_size)
 		icon.rect_size = icon.rect_min_size
 
-	var sep = $body/split/scroll/container.get_constant('hseparation')
-	var cols = int($body/split/scroll.rect_size.x / (icon_size + sep))
+	var sep = previews_container.get_constant('hseparation')
+	var cols = int(previews_scroll.rect_size.x / (icon_size + sep))
 
-	$body/split/scroll/container.columns = cols - 1
-	$body/split/info/icon/params/size/pixels.text = str(icon_size) + " px"
+	previews_container.columns = cols - 1
+	icon_preview_size.text = str(icon_size) + " px"
 
-	$body/search/found.text = NUMBER_ICONS_MSG + str(number)
+	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
 
 	_update_queued = false
 
@@ -156,16 +171,16 @@ func _on_search_text_changed(text):
 
 
 func _on_container_mouse_exited():
-	$body/split/info/icon/label.text = SELECT_ICON_MSG
-	$body/split/info/icon/size.text = ''
-	$body/split/info/icon/copied.hide()
-	$body/split/info/icon/preview.texture = null
+	icon_info_label.text = SELECT_ICON_MSG
+	icon_size_label.text = ''
+	icon_copied_label.hide()
+	icon_preview.texture = null
 
 
 func _on_window_about_to_show():
 	# For some reason can't get proper rect size, so need to wait
-	yield($body/split/scroll/container, 'sort_children')
-	$body/search/box.grab_focus()
+	yield(previews_container, 'sort_children')
+	search_box.grab_focus()
 	_queue_update()
 
 
@@ -174,5 +189,5 @@ func _on_window_popup_hide():
 	filter = ''
 	icon_size = MIN_ICON_SIZE
 
-	$body/search/box.text = filter
-	$body/split/info/icon/params/size/range.value = icon_size
+	search_box.text = filter
+	icon_preview_size_range.value = icon_size
