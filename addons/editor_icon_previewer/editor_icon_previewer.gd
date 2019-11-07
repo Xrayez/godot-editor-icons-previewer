@@ -2,6 +2,7 @@ tool
 extends EditorPlugin
 
 var icon_window
+var suppress_warnings = false
 
 
 func _enter_tree():
@@ -47,6 +48,17 @@ func _update_icons():
 	var list = Array(godot_theme.get_icon_list('EditorIcons'))
 	list.sort() # alphabetically
 
+	var no_name = []
+
 	for icon_name in list:
-		var icon = godot_theme.get_icon(icon_name, 'EditorIcons')
-		icon_window.add_icon(icon, icon_name)
+		var icon_tex = godot_theme.get_icon(icon_name, 'EditorIcons')
+
+		if icon_name.empty():
+			no_name.append(icon_tex)
+			continue
+
+		icon_window.add_icon(icon_tex, icon_name)
+
+	if not suppress_warnings:
+		if no_name.size() > 0:
+			push_warning("EditorIconsPreviewer: detected %s icons with no name set, skipping." % no_name.size())

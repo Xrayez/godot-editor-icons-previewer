@@ -45,13 +45,13 @@ func _queue_update():
 	call_deferred("_update_icons")
 
 
-func add_icon(p_icon, p_hint_tooltip = ''):
+func add_icon(p_icon, p_name):
 	var icon = TextureRect.new()
 	icon.expand = true
 	icon.texture = p_icon
 	icon.rect_min_size = Vector2(icon_size, icon_size)
-	icon.hint_tooltip = p_hint_tooltip
-	icon.name = p_hint_tooltip
+	icon.hint_tooltip = p_name
+	icon.name = p_name
 
 	icon.connect('gui_input', self, '_icon_gui_input', [icon])
 

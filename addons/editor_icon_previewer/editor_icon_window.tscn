@@ -46,7 +46,6 @@ rect_min_size = Vector2( 96, 0 )
 focus_mode = 0
 text = "Found: 0"
 editable = false
-focus_mode = 0
 
 [node name="split" type="HSplitContainer" parent="body"]
 margin_top = 40.0
@@ -159,7 +158,6 @@ size_flags_horizontal = 3
 min_value = 16.0
 max_value = 128.0
 value = 16.0
-focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
