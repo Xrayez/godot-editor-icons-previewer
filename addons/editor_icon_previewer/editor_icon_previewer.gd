@@ -22,14 +22,12 @@ func _exit_tree():
 
 
 func add_icons_menu_item(p_name, p_callback):
-	var minor_version = Engine.get_version_info().minor
-	if minor_version >= 1:
+	if Engine.get_version_info().hex >= 0x030100:
 		add_tool_menu_item(p_name, self, p_callback)
 
 
 func remove_icons_menu_item(p_name):
-	var minor_version = Engine.get_version_info().minor
-	if minor_version >= 1:
+	if Engine.get_version_info().hex >= 0x030100:
 		remove_tool_menu_item(p_name)
 
 
