@@ -4,18 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased][1.2] - 2019-XX-XX
+## [1.2] - 2020-02-02
 
 ### Changed
 
 - Make icons integration in C++ code easier by using double quotes in snippet 
-  template by default:
-    - `get_icon("Add", "EditorIcons")`
+  template by default: `get_icon("Add", "EditorIcons")`
 
 ### Fixed
 
 - Icon previews are automatically updated whenever Godot theme is changed (Dark/Light).
 - Invalid icons with no name are skipped which could cause error spam, severely impacting editor startup times in Godot 3.2.
+- Returned missing `Show Editor Icons` menu option in Godot >4.0 due to incorrect engine version check.
 
 ## [1.1] - 2019-08-05
 
@@ -35,7 +35,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 - Editor icons aligned to fit container on resize.
 
 ## Compare versions
-[Unreleased] 1.2: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.1..HEAD
+
+1.2: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.1..v1.2
 
 1.1: https://github.com/Xrayez/godot-editor-icons-previewer/compare/v1.0...v1.1
 

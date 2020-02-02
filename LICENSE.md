@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2019 Andrii Doroshenko and contributors
+Copyright (c) 2019-2020 Andrii Doroshenko and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
