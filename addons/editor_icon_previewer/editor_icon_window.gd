@@ -150,7 +150,7 @@ func _update_icons():
 	var cols = int(previews_scroll.rect_size.x / (icon_size + sep))
 
 	previews_container.columns = cols - 1
-	icon_preview_size.text = str(icon_size) + " 像素"
+	icon_preview_size.text = str(icon_size) + " px"
 
 	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
 
