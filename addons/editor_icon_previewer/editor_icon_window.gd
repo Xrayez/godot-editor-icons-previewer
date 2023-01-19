@@ -18,9 +18,9 @@ onready var icon_copied_label = icon_info.get_node("copied")
 onready var icon_size_label = icon_info.get_node("size")
 onready var icon_preview_size = icon_info.get_node("params/size/pixels")
 
-const SELECT_ICON_MSG = "选择一个图标。"
-const ICON_SIZE_MSG = "图标大小: "
-const NUMBER_ICONS_MSG = "已发现: "
+const SELECT_ICON_MSG = "Select any icon."
+const ICON_SIZE_MSG = "Icon size: "
+const NUMBER_ICONS_MSG = "Found: "
 const SNIPPET_TEMPLATE = "get_icon(\"%s\", \"EditorIcons\")"
 
 const MIN_ICON_SIZE = 16
