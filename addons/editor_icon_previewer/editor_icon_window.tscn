@@ -7,7 +7,7 @@ margin_right = 300.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 600, 480 )
 focus_mode = 2
-window_title = "编辑器图标"
+window_title = "Editor Icons"
 resizable = true
 script = ExtResource( 1 )
 
@@ -31,7 +31,7 @@ margin_bottom = 24.0
 margin_right = 484.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-placeholder_text = "搜索图标..."
+placeholder_text = "Search icons..."
 caret_blink = true
 caret_blink_speed = 0.5
 
@@ -88,7 +88,7 @@ size_flags_stretch_ratio = 0.25
 [node name="label" type="Label" parent="body/icons/info/icon"]
 margin_right = 162.0
 margin_bottom = 14.0
-text = "选择一个图标。"
+text = "Select any icon."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -137,7 +137,7 @@ margin_bottom = 378.0
 [node name="icon" type="Label" parent="body/icons/info/icon/params"]
 margin_right = 162.0
 margin_bottom = 14.0
-text = "图标预览大小"
+text = "Icons preview size"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -164,7 +164,7 @@ margin_left = 142.0
 margin_top = 1.0
 margin_right = 162.0
 margin_bottom = 15.0
-text = "16 像素"
+text = "16 px"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -173,7 +173,7 @@ __meta__ = {
 margin_top = 382.0
 margin_right = 162.0
 margin_bottom = 402.0
-text = "保存"
+text = "Save"
 
 [connection signal="about_to_show" from="." to="." method="_on_window_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_window_popup_hide"]
