@@ -18,13 +18,13 @@ func _enter_tree():
 	get_editor_interface().get_base_control().add_child(icon_window)
 	icon_window.connect('update_request', self, '_on_update_requested')
 
-	add_icons_menu_item(tr('Show Editor Icons.'), '_on_show_editor_icons_pressed')
+	add_icons_menu_item(tr('Show Editor Icons'), '_on_show_editor_icons_pressed')
 
 
 func _exit_tree():
 	if icon_window:
 		icon_window.queue_free()
-		remove_icons_menu_item(tr('Show Editor Icons.'))
+		remove_icons_menu_item(tr('Show Editor Icons'))
 
 
 func add_icons_menu_item(p_name, p_callback):
