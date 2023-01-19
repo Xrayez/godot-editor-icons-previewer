@@ -9,16 +9,22 @@ func _enter_tree():
 	assert(Engine.get_version_info().major >= 3)
 
 	icon_window = preload('editor_icon_window.tscn').instance()
+	var dialog := EditorFileDialog.new()
+	icon_window.file_dialog = dialog
+	icon_window.add_child(dialog)
+	dialog.add_filter("*.png")
+	dialog.mode = EditorFileDialog.MODE_SAVE_FILE
+	dialog.access = EditorFileDialog.ACCESS_RESOURCES
 	get_editor_interface().get_base_control().add_child(icon_window)
 	icon_window.connect('update_request', self, '_on_update_requested')
 
-	add_icons_menu_item(tr('Show Editor Icons'), '_on_show_editor_icons_pressed')
+	add_icons_menu_item(tr('显示编辑器图标'), '_on_show_editor_icons_pressed')
 
 
 func _exit_tree():
 	if icon_window:
 		icon_window.queue_free()
-		remove_icons_menu_item(tr('Show Editor Icons'))
+		remove_icons_menu_item(tr('显示编辑器图标'))
 
 
 func add_icons_menu_item(p_name, p_callback):

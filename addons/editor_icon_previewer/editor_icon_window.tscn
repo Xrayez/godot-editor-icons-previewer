@@ -7,18 +7,15 @@ margin_right = 300.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 600, 480 )
 focus_mode = 2
-window_title = "Editor Icons"
+window_title = "编辑器图标"
 resizable = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="body" type="VBoxContainer" parent="."]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 592.0
-margin_bottom = 464.0
+margin_bottom = 444.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
@@ -34,7 +31,7 @@ margin_bottom = 24.0
 margin_right = 484.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-placeholder_text = "Search icons..."
+placeholder_text = "搜索图标..."
 caret_blink = true
 caret_blink_speed = 0.5
 
@@ -44,7 +41,7 @@ margin_right = 584.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 96, 0 )
 focus_mode = 0
-text = "Found: 0"
+text = "已发现: 0"
 editable = false
 
 [node name="icons" type="HSplitContainer" parent="body"]
@@ -91,7 +88,7 @@ size_flags_stretch_ratio = 0.25
 [node name="label" type="Label" parent="body/icons/info/icon"]
 margin_right = 162.0
 margin_bottom = 14.0
-text = "Select any icon."
+text = "选择一个图标。"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,19 +125,19 @@ autowrap = true
 [node name="space" type="Control" parent="body/icons/info/icon"]
 margin_top = 168.0
 margin_right = 162.0
-margin_bottom = 364.0
+margin_bottom = 340.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="params" type="VBoxContainer" parent="body/icons/info/icon"]
-margin_top = 368.0
+margin_top = 344.0
 margin_right = 162.0
-margin_bottom = 402.0
+margin_bottom = 378.0
 
 [node name="icon" type="Label" parent="body/icons/info/icon/params"]
 margin_right = 162.0
 margin_bottom = 14.0
-text = "Icons preview size"
+text = "图标预览大小"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,7 +148,7 @@ margin_right = 162.0
 margin_bottom = 34.0
 
 [node name="range" type="HSlider" parent="body/icons/info/icon/params/size"]
-margin_right = 123.0
+margin_right = 138.0
 margin_bottom = 16.0
 focus_mode = 0
 size_flags_horizontal = 3
@@ -163,14 +160,21 @@ __meta__ = {
 }
 
 [node name="pixels" type="Label" parent="body/icons/info/icon/params/size"]
-margin_left = 127.0
+margin_left = 142.0
 margin_top = 1.0
 margin_right = 162.0
 margin_bottom = 15.0
-text = "16 px"
+text = "16 像素"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="save" type="Button" parent="body/icons/info/icon"]
+margin_top = 382.0
+margin_right = 162.0
+margin_bottom = 402.0
+text = "保存"
+
 [connection signal="about_to_show" from="." to="." method="_on_window_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_window_popup_hide"]
 [connection signal="resized" from="." to="." method="_on_window_resized"]
@@ -178,3 +182,4 @@ __meta__ = {
 [connection signal="text_changed" from="body/search/box" to="." method="_on_search_text_changed"]
 [connection signal="mouse_exited" from="body/icons/previews/container" to="." method="_on_container_mouse_exited"]
 [connection signal="value_changed" from="body/icons/info/icon/params/size/range" to="." method="_on_size_changed"]
+[connection signal="pressed" from="body/icons/info/icon/save" to="." method="_on_save_pressed"]
