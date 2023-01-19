@@ -41,7 +41,7 @@ margin_right = 584.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 96, 0 )
 focus_mode = 0
-text = "已发现: 0"
+text = "Found: 0"
 editable = false
 
 [node name="icons" type="HSplitContainer" parent="body"]
