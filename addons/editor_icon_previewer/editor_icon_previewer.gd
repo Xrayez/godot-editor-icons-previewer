@@ -3,6 +3,7 @@ extends EditorPlugin
 
 var icon_window
 var suppress_warnings = false
+@onready var property_input = $OptionButton
 
 
 func _enter_tree():
@@ -11,6 +12,7 @@ func _enter_tree():
 	icon_window = preload('editor_icon_window.tscn').instantiate()
 	get_editor_interface().get_base_control().add_child(icon_window)
 	icon_window.update_request.connect(_on_update_requested)
+	icon_window.plugin = self
 
 	add_icons_menu_item(tr('Show Editor Icons'), '_on_show_editor_icons_pressed')
 
@@ -61,3 +63,25 @@ func _populate_icons():
 	if not suppress_warnings:
 		if no_name.size() > 0:
 			push_warning("EditorIconsPreviewer: detected %s icons with no name set, skipping." % no_name.size())
+
+
+func convert_to_texture():
+	var selected_nodes = get_editor_interface().get_selection().get_transformable_selected_nodes()
+	if selected_nodes.size() > 0:
+		var selected_node = get_editor_interface().get_selection().get_transformable_selected_nodes()[0]
+		var selected_node_path = selected_node.get_path()
+		var properties = selected_node.get_property_list()
+		
+#		icon_rect.texture = get_icon(selected_node.get_class())
+#		node_input.text = selected_node_path
+		
+		property_input.clear()
+		for p in properties:
+			if p["class_name"] == "Texture": property_input.add_item(p.name)
+		
+#		selected_node.set(property_input.get_item_text(property_input.selected), get_icon( .hint_tooltip))
+
+
+
+
+

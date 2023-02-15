@@ -31,6 +31,8 @@ var filter = ''
 
 var _update_queued = false
 
+var plugin
+
 
 func _ready():
 	icon_info_label.text = SELECT_ICON_MSG
@@ -75,17 +77,13 @@ func add_icon(p_icon, p_name):
 
 func _icon_gui_input(event, icon):
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			# Copy raw icon's name into the clipboard
+		if event.button_index == MOUSE_BUTTON_LEFT: # Copy raw icon's name into the clipboard
 			DisplayServer.clipboard_set(icon.tooltip_text)
-			icon_copied_label.show()
-
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			# Copy icon's name with embedded code into the clipboard
-			var snippet = SNIPPET_TEMPLATE % [icon.tooltip_text]
-			DisplayServer.clipboard_set(snippet)
-			icon_copied_label.show()
-
+			plugin.get_editor_interface().get_inspector().set_meta("CurrentTexture", icon.texture)
+		elif event.button_index == MOUSE_BUTTON_RIGHT: # Copy icon's name with embedded code into the clipboard
+			DisplayServer.clipboard_set(SNIPPET_TEMPLATE % [icon.tooltip_text])
+		icon_copied_label.show()
+		
 	elif event is InputEventMouseMotion:
 		# Preview hovered icon on the side panel
 		icon_info_label.text = icon.tooltip_text
@@ -149,6 +147,7 @@ func _update_icons():
 	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
 
 	_update_queued = false
+
 
 
 func _on_window_visibility_changed():
