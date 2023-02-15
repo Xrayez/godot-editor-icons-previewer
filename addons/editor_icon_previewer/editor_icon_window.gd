@@ -144,7 +144,6 @@ func _update_icons():
 
 	var cols = int((size.x-$body/icons/info.size.x) / (icon_size + 5))
 	previews_container.columns = cols - 1
-	print(previews_container.columns)
 	icon_preview_size.text = str(icon_size) + " px"
 
 	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
