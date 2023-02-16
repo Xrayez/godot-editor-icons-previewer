@@ -193,3 +193,14 @@ func _on_about_to_popup():
 
 func _on_close_requested():
 	_on_window_popup_hide()
+
+func _on_button_pressed():
+	var img:Image = plugin.get_editor_interface().get_inspector().get_meta("CurrentTexture").get_image()
+	img.save_png($body/icons/info/icon/Export/LineEdit.text+$body/icons/info/icon/label.text+".png")
+
+
+
+
+
+
+
