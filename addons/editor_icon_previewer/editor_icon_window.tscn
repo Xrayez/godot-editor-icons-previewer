@@ -1,180 +1,137 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://borp7xe2de2u0"]
 
-[ext_resource path="res://addons/editor_icon_previewer/editor_icon_window.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://addons/editor_icon_previewer/editor_icon_window.gd" id="1"]
+
+[sub_resource type="Image" id="Image_x051p"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 105, 231, 231, 231, 21, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 105, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 105, 224, 224, 224, 255, 224, 224, 224, 210, 231, 231, 231, 21, 224, 224, 224, 255, 224, 224, 224, 255, 231, 231, 231, 21, 224, 224, 224, 211, 224, 224, 224, 255, 224, 224, 224, 105, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 210, 224, 224, 224, 255, 224, 224, 224, 210, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 211, 224, 224, 224, 255, 224, 224, 224, 210, 230, 230, 230, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 210, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 210, 230, 230, 230, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 181, 224, 224, 224, 180, 255, 255, 255, 0, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 210, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 210, 230, 230, 230, 20, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 181, 224, 224, 224, 180, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 231, 231, 231, 21, 224, 224, 224, 211, 224, 224, 224, 195, 230, 230, 230, 20, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 255, 255, 255, 0, 255, 255, 255, 0, 224, 224, 224, 180, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 255, 224, 224, 224, 180, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8n8sr"]
+image = SubResource("Image_x051p")
 
 [node name="window" type="AcceptDialog"]
-margin_right = 300.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 600, 480 )
-focus_mode = 2
-window_title = "Editor Icons"
-resizable = true
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size = Vector2i(168, 349)
+script = ExtResource("1")
 
 [node name="body" type="VBoxContainer" parent="."]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 592.0
-margin_bottom = 464.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 16
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="search" type="HBoxContainer" parent="body"]
-margin_right = 584.0
-margin_bottom = 24.0
+layout_mode = 2
 
 [node name="box" type="LineEdit" parent="body/search"]
-margin_right = 484.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search icons..."
 caret_blink = true
-caret_blink_speed = 0.5
 
 [node name="found" type="LineEdit" parent="body/search"]
-margin_left = 488.0
-margin_right = 584.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 96, 0 )
+layout_mode = 2
 focus_mode = 0
 text = "Found: 0"
 editable = false
 
 [node name="icons" type="HSplitContainer" parent="body"]
-margin_top = 40.0
-margin_right = 584.0
-margin_bottom = 456.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 dragger_visibility = 1
 
 [node name="previews" type="ScrollContainer" parent="body/icons"]
-margin_right = 396.0
-margin_bottom = 416.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="container" type="GridContainer" parent="body/icons/previews"]
-margin_right = 396.0
-margin_bottom = 416.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 18
 
 [node name="info" type="PanelContainer" parent="body/icons"]
-self_modulate = Color( 0.615686, 0.615686, 0.615686, 1 )
-margin_left = 408.0
-margin_right = 584.0
-margin_bottom = 416.0
-rect_min_size = Vector2( 176, 0 )
+self_modulate = Color(0.615686, 0.615686, 0.615686, 1)
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="icon" type="VBoxContainer" parent="body/icons/info"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 169.0
-margin_bottom = 409.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
 [node name="label" type="Label" parent="body/icons/info/icon"]
-margin_right = 162.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Select any icon."
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="preview" type="TextureRect" parent="body/icons/info/icon"]
-margin_top = 18.0
-margin_right = 128.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 128, 128 )
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.25
-expand = true
+expand_mode = 1
 stretch_mode = 5
 
 [node name="size" type="Label" parent="body/icons/info/icon"]
-margin_top = 150.0
-margin_right = 162.0
-margin_bottom = 164.0
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="copied" type="Label" parent="body/icons/info/icon"]
 visible = false
-margin_top = 3.0
-margin_right = 223.0
-margin_bottom = 28.0
+layout_mode = 2
 text = "Copied to clipboard!"
-autowrap = true
+
+[node name="Export" type="HBoxContainer" parent="body/icons/info/icon"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="body/icons/info/icon/Export"]
+layout_mode = 2
+placeholder_text = "Export folder"
+
+[node name="Button" type="Button" parent="body/icons/info/icon/Export"]
+layout_mode = 2
+icon = SubResource("ImageTexture_8n8sr")
 
 [node name="space" type="Control" parent="body/icons/info/icon"]
-margin_top = 168.0
-margin_right = 162.0
-margin_bottom = 364.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="params" type="VBoxContainer" parent="body/icons/info/icon"]
-margin_top = 368.0
-margin_right = 162.0
-margin_bottom = 402.0
+layout_mode = 2
 
 [node name="icon" type="Label" parent="body/icons/info/icon/params"]
-margin_right = 162.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Icons preview size"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="size" type="HBoxContainer" parent="body/icons/info/icon/params"]
-margin_top = 18.0
-margin_right = 162.0
-margin_bottom = 34.0
+layout_mode = 2
 
 [node name="range" type="HSlider" parent="body/icons/info/icon/params/size"]
-margin_right = 123.0
-margin_bottom = 16.0
-focus_mode = 0
+layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 min_value = 16.0
 max_value = 128.0
 value = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="pixels" type="Label" parent="body/icons/info/icon/params/size"]
-margin_left = 127.0
-margin_top = 1.0
-margin_right = 162.0
-margin_bottom = 15.0
+layout_mode = 2
 text = "16 px"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="about_to_show" from="." to="." method="_on_window_about_to_show"]
-[connection signal="popup_hide" from="." to="." method="_on_window_popup_hide"]
-[connection signal="resized" from="." to="." method="_on_window_resized"]
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="visibility_changed" from="." to="." method="_on_window_visibility_changed"]
 [connection signal="text_changed" from="body/search/box" to="." method="_on_search_text_changed"]
 [connection signal="mouse_exited" from="body/icons/previews/container" to="." method="_on_container_mouse_exited"]
+[connection signal="pressed" from="body/icons/info/icon/Export/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="body/icons/info/icon/params/size/range" to="." method="_on_size_changed"]
