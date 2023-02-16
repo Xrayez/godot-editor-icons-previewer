@@ -9,6 +9,12 @@ func _enter_tree():
 	assert(Engine.get_version_info().major >= 3)
 
 	icon_window = preload('editor_icon_window.tscn').instance()
+	var dialog := EditorFileDialog.new()
+	icon_window.file_dialog = dialog
+	icon_window.add_child(dialog)
+	dialog.add_filter("*.png")
+	dialog.mode = EditorFileDialog.MODE_SAVE_FILE
+	dialog.access = EditorFileDialog.ACCESS_RESOURCES
 	get_editor_interface().get_base_control().add_child(icon_window)
 	icon_window.connect('update_request', self, '_on_update_requested')
 

@@ -31,8 +31,12 @@ var filter = ''
 
 var _update_queued = false
 
+var file_dialog: EditorFileDialog
+
 
 func _ready():
+	file_dialog.connect("file_selected", self, "_on_file_selected")
+	
 	icon_info_label.text = SELECT_ICON_MSG
 
 	icon_preview_size_range.min_value = MIN_ICON_SIZE
@@ -88,9 +92,6 @@ func _icon_gui_input(event, icon):
 			var snippet = SNIPPET_TEMPLATE % [icon.hint_tooltip]
 			OS.clipboard = snippet
 			icon_copied_label.show()
-
-	elif event is InputEventMouseMotion:
-		# Preview hovered icon on the side panel
 		icon_info_label.text = icon.hint_tooltip
 		icon_preview.texture = icon.texture
 		icon_size_label.text = ICON_SIZE_MSG + str(icon.texture.get_size())
@@ -115,9 +116,9 @@ func display():
 	if previews_container.get_child_count() == 0:
 		# First time, request to create previews by the plugin
 		emit_signal("update_request")
-		call_deferred('popup_centered_ratio', 0.5)
+		call_deferred('popup_centered_ratio', 0.75)
 	else:
-		popup_centered_ratio(0.5)
+		popup_centered_ratio(0.75)
 
 
 func clear():
@@ -171,10 +172,7 @@ func _on_search_text_changed(text):
 
 
 func _on_container_mouse_exited():
-	icon_info_label.text = SELECT_ICON_MSG
-	icon_size_label.text = ''
 	icon_copied_label.hide()
-	icon_preview.texture = null
 
 
 func _on_window_about_to_show():
@@ -191,3 +189,12 @@ func _on_window_popup_hide():
 
 	search_box.text = filter
 	icon_preview_size_range.value = icon_size
+
+
+func _on_save_pressed():
+	file_dialog.popup_centered_ratio()
+
+
+func _on_file_selected(path: String):
+	var texture = icon_preview.texture
+	ResourceSaver.save(path, texture)
