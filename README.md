@@ -6,18 +6,14 @@ Godot editor plugins without the need to import any custom icons.
 
 ## Compatibility
 
-Godot 3.0+ compatible. Note that in version 3.0, there's no menu option, but the
-plugin is still accesible via a shortcut (see below).
+Godot 4.0 compatible.
 
 ## Usage
 
+To read the full documentation, which will be kept updated as more features come in, read https://docs.google.com/document/d/1y2aPsn72dOxQ-wBNGqLlQvrw9-SV_z12a1MradBglF4/edit?usp=sharing
+
 Navigate to `Project` > `Tools` and click `Show Editor Icons` menu option
 (<kbd>Alt</kbd>+<kbd>I</kbd> shortcut is also available for this):
-
-![Show Editor Icons](images/show_editor_icons.png)
-
-A window shall popup listing all available editor icons which Godot uses natively
-(can also show icons from any custom C++ module):
 
 ![Editor Icons](images/editor_icons.gif)
 
@@ -27,10 +23,6 @@ In order to use the icon in your plugins, you can fetch it via code like so:
 ```gdscript
 button.icon = get_icon('Add', 'EditorIcons')
 ```
-
-To simplify the process even further, you can also get the above snippet by
-right-clicking on an icon and it will be copied to your clipboard. Left-clicking 
-just copies the raw icon's name.
 
 ## Caveats
 
