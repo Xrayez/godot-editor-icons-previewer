@@ -8,8 +8,11 @@ Godot editor plugins without the need to import any custom icons.
 
 Godot 3.0+ compatible. Note that in version 3.0, there's no menu option, but the
 plugin is still accesible via a shortcut (see below).
+For the Godot 4 version, see here : [latest version](https://github.com/Xrayez/godot-editor-icons-previewer/tree/gd4)
 
 ## Usage
+
+To read the full documentation, which will be kept updated as more features come in, read [the documentation](https://docs.google.com/document/d/1y2aPsn72dOxQ-wBNGqLlQvrw9-SV_z12a1MradBglF4/edit?usp=sharing)
 
 Navigate to `Project` > `Tools` and click `Show Editor Icons` menu option
 (<kbd>Alt</kbd>+<kbd>I</kbd> shortcut is also available for this):
