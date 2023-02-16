@@ -7,6 +7,7 @@ Godot editor plugins without the need to import any custom icons.
 ## Compatibility
 
 Godot 4.0 compatible.
+This plugin is compatible with [SuperSpector plugin](https://github.com/Dark-Peace/SuperSpector). Use this plugin to copy paste the textures directly to properties in the inspector.
 
 ## Usage
 
