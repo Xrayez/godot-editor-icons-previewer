@@ -131,7 +131,7 @@ func _update_icons():
 	for idx in previews_container.get_child_count():
 		var icon = previews_container.get_child(idx)
 
-		if not filter.is_subsequence_of(icon.tooltip_text):
+		if not filter.is_subsequence_ofn(icon.tooltip_text):
 			icon.visible = false
 		else:
 			icon.visible = true
