@@ -132,6 +132,7 @@ func _update_icons():
 		var icon = previews_container.get_child(idx)
 
 		if not filter.is_subsequence_ofn(icon.tooltip_text):
+#		if not filter.is_subsequence_of(icon.tooltip_text):
 			icon.visible = false
 		else:
 			icon.visible = true
@@ -145,6 +146,7 @@ func _update_icons():
 	icon_preview_size.text = str(icon_size) + " px"
 
 	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
+	print(search_box_count_label.text)
 
 	_update_queued = false
 
