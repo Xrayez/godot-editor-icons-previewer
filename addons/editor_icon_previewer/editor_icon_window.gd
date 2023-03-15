@@ -146,7 +146,6 @@ func _update_icons():
 	icon_preview_size.text = str(icon_size) + " px"
 
 	search_box_count_label.text = NUMBER_ICONS_MSG + str(number)
-	print(search_box_count_label.text)
 
 	_update_queued = false
 
