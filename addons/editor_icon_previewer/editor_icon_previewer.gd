@@ -44,7 +44,7 @@ func _on_update_requested():
 func _populate_icons():
 	icon_window.clear()
 
-	var godot_theme = get_editor_interface().get_base_control().theme
+	var godot_theme = EditorInterface.get_editor_theme()
 
 	var list = Array(godot_theme.get_icon_list('EditorIcons'))
 	list.sort() # alphabetically
@@ -66,9 +66,9 @@ func _populate_icons():
 
 
 func convert_to_texture():
-	var selected_nodes = get_editor_interface().get_selection().get_transformable_selected_nodes()
+	var selected_nodes = EditorInterface.get_selection().get_transformable_selected_nodes()
 	if selected_nodes.size() > 0:
-		var selected_node = get_editor_interface().get_selection().get_transformable_selected_nodes()[0]
+		var selected_node = EditorInterface.get_selection().get_transformable_selected_nodes()[0]
 		var selected_node_path = selected_node.get_path()
 		var properties = selected_node.get_property_list()
 		
