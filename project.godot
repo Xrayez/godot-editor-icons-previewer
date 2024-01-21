@@ -6,17 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+config_version=5
 
 [application]
 
 config/name="Editor Icons Previewer"
+config/features=PackedStringArray("4.2")
 
 [editor_plugins]
 
-enabled=PoolStringArray( "editor_icon_previewer" )
+enabled=PackedStringArray("editor_icon_previewer")
