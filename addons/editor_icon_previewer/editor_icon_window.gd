@@ -93,7 +93,7 @@ func _icon_gui_input(event, icon):
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and not event.echo:
-		if event.scancode == KEY_I:
+		if event.physical_keycode == KEY_I:
 			if not visible:
 				display()
 			else:
